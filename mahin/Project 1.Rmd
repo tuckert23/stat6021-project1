@@ -1,0 +1,68 @@
+---
+title: "Project 1"
+output: pdf_document
+date: "2023-10-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## 
+```{r}
+Data <- read.csv("diamonds4.csv",header=T)
+```
+
+```{r}
+library(tidyverse)
+library(MASS)
+library(faraway)
+ggplot(Data,aes(x=carat,y=price)) + geom_point()+
+  geom_smooth(method = "lm", se=FALSE)
+```
+
+The scatterplot comparing carat and price looks exponential rather than linear. This would indicate that a transformation is needed, likely a log transformation.
+
+```{r}
+result <- lm(price ~ carat,data=Data)
+par(mfrow = c(2, 2))
+plot(result)
+```
+
+```{r}
+library(MASS)
+MASS::boxcox(result)
+```
+
+Based on the diagnostic plots as well as the boxcox plots, it seems that both assumptions 1 and 2 have been violated since the errors do not have mean 0 or constant variance based on the residual plot. If both assumptions are violated, the likely solution is to log transform both the x and y variables. The box-cox plot agrees with this since the confidence interval does not include 1, indicating the y variable must be transformed.
+
+
+```{r}
+ystar<-log(Data$price)
+Data<-data.frame(Data,ystar)
+ggplot(Data,aes(x=carat,y=ystar)) + geom_point()+
+  geom_smooth(method = "lm", se=FALSE)
+
+xstar<-log(Data$carat)
+Data<-data.frame(Data,xstar)
+ggplot(Data,aes(x=xstar,y=ystar)) + geom_point()+
+  geom_smooth(method = "lm", se=FALSE)
+```
+The first graph shows a scatter plot with just the y variable being log transformed. This does not remedy the exponential relationship, so the x is also log transformed, which ends up fixing the linear regression assumption. 
+
+```{r}
+result2 <- lm(ystar ~ xstar,data=Data)
+par(mfrow = c(2, 2))
+plot(result2)
+```
+
+After log transforming both the x and y variables, the diagnostic plots also pass the assumption, with a errors boht having a mean of aorund 0 and constant variance.
+
+
+```{r}
+summary(result2)
+```
+Based on the results of the model with both the response and the predictor being log transformed, xstar, log(carat), is very significant with a p value much lower than 0.05. This means that the log of carat is significant in predicting the log of the price of the diamond. 
+
+The regression equation is log(y) = 8.521 + 1.944log(x). This means that for every 1% increase in the carat size, the price of the diamond is expected to increase by around 1.944%.
