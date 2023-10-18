@@ -66,3 +66,7 @@ summary(result2)
 Based on the results of the model with both the response and the predictor being log transformed, xstar, log(carat), is very significant with a p value much lower than 0.05. This means that the log of carat is significant in predicting the log of the price of the diamond. 
 
 The regression equation is log(y) = 8.521 + 1.944log(x). This means that for every 1% increase in the carat size, the price of the diamond is expected to increase by around 1.944%.
+
+
+# Data Descriptions
+Citation: Blue Nile. “The 4Cs of Diamonds,” n.d. https://www.bluenile.com/education/diamonds.
