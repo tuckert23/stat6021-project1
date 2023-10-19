@@ -137,6 +137,7 @@ As a reminder, the regression assumptions are as follows:
 \end{itemize}
 
 To confirm, we will take a look at the diagnostic plots.
+
 ```{r}
 result <- lm(price ~ carat,data=Data)
 par(mfrow = c(2, 2))
@@ -162,6 +163,7 @@ par(mfrow = c(2, 2))
 plot(result2)
 acf(result2$residuals, main="ACF Plot of Residuals from Y* ~ X* Model")
 ```
+
 After log transforming both the `x` and `y` variables, the diagnostic plots also pass the assumption, with errors appearing to have both a mean of 0 and constant variance. Further, the Q-Q plot shows that the residuals have a fairly normal distribution. Based on the ACF plot, we can also see that the errors are independent. Thus, all four regression assumptions are met. 
 
 So, our hypotheses are:
