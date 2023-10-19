@@ -12,7 +12,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ## 
 ```{r}
 Data <- read.csv("diamonds4.csv",header=T)
-head(Data)
 ```
 
 ```{r}
@@ -22,8 +21,6 @@ library(faraway)
 ggplot(Data,aes(x=carat,y=price)) + geom_point()+
   geom_smooth(method = "lm", se=FALSE)
 ```
-Note: 
-
 
 The scatterplot comparing carat and price looks exponential rather than linear. This would indicate that a transformation is needed, likely a log transformation.
 
@@ -60,20 +57,7 @@ par(mfrow = c(2, 2))
 plot(result2)
 ```
 
-After log transforming both the x and y variables, the diagnostic plots also pass the assumption, with a errors both having a mean of around 0 and constant variance. Further, the Q-Q plot shows that the residuals have a fairly normal distribution.
-
-```{r}
-acf(result2$residuals, main="ACF Plot of Residuals from Y* ~ X* Model")
-```
-Based on the ACF plot, we can also see that the errors are independent. 
-
-Thus, all four regression assumptions are met. 
-
-Our hypotheses are:
-
-$H_0: \beta_1 = 0$
-
-$H_0: \beta_1 \ne 0$
+After log transforming both the x and y variables, the diagnostic plots also pass the assumption, with a errors boht having a mean of aorund 0 and constant variance.
 
 
 ```{r}
@@ -85,19 +69,4 @@ The regression equation is log(y) = 8.521 + 1.944log(x). This means that for eve
 
 
 # Data Descriptions
-Citation (If needed): Blue Nile. “The 4Cs of Diamonds,” n.d. https://www.bluenile.com/education/diamonds.
-
-The quality, and consequently cost, of diamonds is measured with the "4Cs of Diamonds": the cut, color, clarity and carat weight, which all appear in the dataset.
-
-The cut of a diamond measures how "well-proportions a diamond's dimension are", as well as, once being processed, the "balance and brilliance of its facets". The facets of a diamond are the sides which are formed on the diamonds surface to give it its reflective, glittery appearance.
-
-The color of a diamond refers to the colorlessness of the diamond. Diamonds can often be yellowish, or off-white, depending on impurities in the source material. Therefore, the purest of diamonds are the ones which are completely colorless.
-
-The clarity of a diamond measures the cloudiness or impurities that can occur during diamond formation, due to impurities or foreign material. 
-
-Finally, the carat weight refers to the physical weight of the diamond. One carat is roughly equivalent to 0.2g, or 0.00705 oz.
-
-The final column in the dataset refers to the price that the particular diamond sold for. 
-
-During the analysis portion, we had to create a few new variables. 
-
+Citation: Blue Nile. “The 4Cs of Diamonds,” n.d. https://www.bluenile.com/education/diamonds.
