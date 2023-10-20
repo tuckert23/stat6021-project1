@@ -20,7 +20,9 @@ Data <- read.csv("diamonds4.csv",header=T)
 
 # Section 1: High Level Results of the Analysis
 
-Our report studied the relationship between various factors associated with the grading of diamonds and the price of the diamonds. We found that the carat weight, a carat being roughly equal to 0.2 grams, is the most important factor in determining the price of the diamond. Thus, we analyzed the relationship between the carat weight of the diamond and its price. We found that, if the carat weight of a diamond increases by 1%, then the price of the diamond will increase by between 1.92% and 1.97%.
+
+An analysis of diamond prices reveals the relationship between the "4Cs of Diamonds" and their value. Known as `cut`, `color`, `clarity`, and `carat`, the 4Cs [(established by the Gemological Institute of America)](https://www.gia.edu/gia-faq-analysis-grading-4cs) are a common set of classifications to determine the rarity and value of a diamond. An investigation into those relationships shows that while the 4Cs are an integral factor in determining the price of a diamond, carat weight is the most significant factor driving price. A carat converts to approximately 0.2 grams. In a study of 1214 diamonds with carat weights ranging from 0.23ct to 7.09ct, weight was found to be most crucial in determining the market value of a diamond. Our analysis determines that for each 1% increase in carat weight results in an increased value within the range of 1.92% to 1.97%. While our study was able to quantify the relationship between weight and price, the implicit value remains in the *eye of the beholder* as it only can with beauty and art. 
+
 
 # Section 2: Data Description
 
