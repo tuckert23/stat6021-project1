@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
 ```{r}
 library(tidyverse)
 library(MASS)
-
+library(bookdown)
 Data <- read.csv("diamonds4.csv",header=T)
 
 ```
@@ -83,7 +83,7 @@ To better understand how `price` is related to the other variables in the data s
 
 ### Price vs. Carat Weight
 
-```{r}
+```{r, fig.cap='Scatter plot of Diamond Price and Carat Weight'}
 ggplot(Data, aes(x=carat, y=price/1000)) + 
   geom_point() + 
   labs(x = "Carat Weight", y = "Price of Diamond ('000s $USD)", title = "Relationship between Diamond Price & Carat Weight")+
@@ -96,7 +96,7 @@ We can see from this scatter plot that the relationship between the price of a d
 
 To order the categories for `clarity` to match the given scale, we applied data manipulation to refactor the levels of the variable based on the tiered quality levels provided. We then created a new data frame, where the diamonds were grouped by the clarity factor and the median price was applied. We plotted both boxplots of the `price` vs. the `clarity`, as well as bar plots of the median `price` vs. `clarity`. These plots will give us an idea about how `price` is related to `clarity`. The associated plots are:
 
-```{r}
+```{r, fig.cap='Analysis of Prices by Clarity'}
 # Code to relevel the clarity factors from lowest-clarity to highest-clarity
 Data <- Data %>% 
   mutate(clarity = clarity %>% fct_relevel(c("SI2", "SI1", "VS2", "VS1", "VVS2", "VVS1", "IF", "FL")))
@@ -111,7 +111,10 @@ ggplot(data.clarity, aes(x = clarity, y=median_price_clarity)) +
   geom_bar(stat = "identity") + 
   labs(x = "Clarity", y = "Median Price of Diamond ($USD)", title = "Median Price of Diamond Based on Clarity")+
   theme(plot.title = element_text(hjust = 0.5))
+```
 
+
+```{r, fig.cap='Percentiles of Price by Quality'}
 # Boxplot
 ggplot(Data, aes(x=clarity, y = price/1000)) + 
   geom_boxplot() + 
@@ -119,13 +122,14 @@ ggplot(Data, aes(x=clarity, y = price/1000)) +
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
+
 Shown in the bar plot above, the price increases dramatically when the clarity reaches the level of FL, which is flawless. We see that the median price of the diamond is not particularly affected by the clarity. However, based on the box plot, the upper end of the prices for each quality do appear to have an upwards trend.
 
 ### Price vs. Color
 
 To order the categories for `color` to match the given scale, we applied data manipulation to refactor the levels of the variable. One note regarding the refactoring: when refactoring using all of the potential `color` levels, we received warnings that the color level `K` was not found in the data. Thus, we removed that level from the refactoring. A new data frame was created where the data for diamonds were grouped by `color`  and the median of the price was taken for each `color`. We plotted both box plots of the `price` vs. the `color` in addition to bar plots of the median `price` vs. `color`. These plots will give insights with regards to how `price` is related to `color`. The associated plots are:
 
-```{r}
+```{r, fig.cap='Analysis of Prices by Color'}
 # Releveling the factors for color to match the increasing qualities from BlueNile
 Data <- Data %>% 
   mutate(color = color %>% fct_relevel(c("J", "I", "H", "G", "F", "E", "D")))
@@ -140,7 +144,10 @@ ggplot(data.color, aes(x = color, y=median_price_color)) +
   geom_bar(stat = "identity") + 
   labs(x = "Color", y = "Median Price of Diamond", title = "Median Price of Diamond Based on Color")+
   theme(plot.title = element_text(hjust = 0.5))
+```
 
+
+```{r, fig.cap='Percentiles of Price by Color'}
 # Boxplot
 ggplot(Data, aes(x=color, y = price/1000)) + 
   geom_boxplot() + 
@@ -148,13 +155,15 @@ ggplot(Data, aes(x=color, y = price/1000)) +
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
+
+
 Based on the bar plot, we do not see much of a relationship between color and the price of the median diamond of each color. In fact, the highest median price for a diamond appears for the lowest color quality on the scale: `J`. Ignoring the median price for the color level `J`, there is an upwards trend leading us to believe that the distribution of `J's` prices are skewed to the higher prices. When looking at the box plots, the upper end of the diamonds sold at each color appear to have an upwards trajectory. That being said, the color does not appear to be a major factor in determining the price of a diamond, but there is certainly a loose positive relationship between `color` and `price`.
 
 ### Price vs. Cut
 
 To order the categories for `cut` to match the given scale, we refactored the levels of the variable. We created a new data frame, where the data for diamonds were grouped by the `cut`, and the median of the price was taken for each group. We plotted both box plots of the `price` vs. the `cut`, as well as bar plots of the median `price` vs. `cut`. These plots will give us an idea about how `price` is related to `cut`. The associated plots are:
 
-```{r}
+```{r, fig.cap='Analysis of Prices by Cut'}
 # Releveling the factors for color to match the increasing qualities from BlueNile
 Data <- Data %>% 
   mutate(cut = cut %>% fct_relevel(c("Good", "Very Good", "Ideal", "Astor Ideal")))
@@ -169,13 +178,17 @@ ggplot(data.cut, aes(x = cut, y=median_price_cut)) +
   geom_bar(stat = "identity") + 
   labs(x = "Cut", y = "Median Price of Diamond", title = "Median Price of Diamond Based on Cut")+
   theme(plot.title = element_text(hjust = 0.5))
+```
 
+
+```{r, , fig.cap='Percentiles of Price by Cut'}
 # Boxplot
 ggplot(Data, aes(x=cut, y = price/1000)) + 
   geom_boxplot() + 
   labs(x = "Cut", y = "Price of Diamond ('000s $USD)", title = "Price of Diamond vs. Cut")+
   theme(plot.title = element_text(hjust = 0.5))
 ```
+
 
 As seen with color and clarity, the bar plot does not show much of an upwards trend in median prices based on the cut of the diamond. In fact, with the exception of the Astor Ideal cut, the median prices decline as the cut quality improves. This trend continues when looking at the box plot. There is no discernible upwards trend in the upper end of prices as the cut of the diamonds improve. Based on this information, it appears that the cut is not a relevant variable when it comes to determining the price of a diamond
 
@@ -185,7 +198,7 @@ Based on the analysis above, the variable that best appears to relate to the pri
 
 First, we must take a look at the scatter plot of the response variable $price$ against the designated predictor variable $carat$.
 
-```{r}
+```{r, fig.cap='Trending of Price and Carat'}
 ggplot(Data,aes(x=carat,y=price/1000)) + 
   geom_point() +
   geom_smooth(method = "lm") +
@@ -207,20 +220,20 @@ The simple linear regression assumptions are as follows:
 ```
 To confirm, the diagnostic plots are produced:
 
-```{r}
+```{r, fig.cap='Diagnostic Plots'}
 result <- lm(price ~ carat,data=Data)
 par(mfrow = c(2, 2))
 plot(result)
 ```
 
-```{r}
+```{r, fig.cap='BoxCox Plot'}
 boxcox(result)
 ```
 Based on the diagnostic plots, it seems that both regression assumptions 1 and 2 have been violated since the errors do not have mean 0 nor constant variance. The mean of the residuals appears to decrease, and the residuals appear become more variable. If both assumptions are violated, the best solution is to log transform both the x and y variables. The Box-Cox plot agrees with this since the confidence interval does not include 1, indicating the y variable must be transformed.
 
 We will create the variable `xstar`, which is defined as $x^* = ln(carat)$ and the variable `ystar`, defined as $y^* = ln(price)$:
 
-```{r}
+```{r, fig.cap='Transformed Trending of Price and Carat'}
 ystar<-log(Data$price)
 Data<-data.frame(Data,ystar)
 xstar<-log(Data$carat)
@@ -233,13 +246,13 @@ ggplot(Data,aes(x=xstar,y=ystar)) + geom_point()+
 
 As we can see from the above scatter plot, the relationship appears much more linear than original analysis before. To be sure we have remediated the violations of the regression assumptions, we look at the diagnostic plots once more:
 
-```{r}
+```{r, fig.cap='Transformed Residuals'}
 result2 <- lm(ystar ~ xstar,data=Data)
 par(mfrow = c(2, 2))
 plot(result2)
 ```
 
-```{r}
+```{r, fig.cap='ACF Plot'}
 acf(result2$residuals, main="ACF Plot of Residuals from Y* ~ X* Model")
 ```
 
