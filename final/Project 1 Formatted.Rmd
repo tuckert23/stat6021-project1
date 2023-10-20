@@ -1,0 +1,291 @@
+---
+title: "STAT 6021: Project 1"
+author: "Taylor Tucker, Mahin Ganesan, Wyatt Priddy"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(MASS)
+library(bookdown)
+Data <- read.csv("diamonds4.csv",header=T)
+
+```
+
+# Section 1: High Level Results of the Analysis
+
+An analysis of diamond prices reveals the relationship between the "4Cs of Diamonds" and their value. Known as `cut`, `color`, `clarity`, and `carat`, the 4Cs [(established by the Gemological Institute of America)](https://www.gia.edu/gia-faq-analysis-grading-4cs) are a common set of classifications to determine the rarity and value of a diamond. An investigation into those relationships shows that while the 4Cs are an integral factor in determining the price of a diamond, carat weight is the most significant factor driving price. A carat converts to approximately 0.2 grams. In a study of 1214 diamonds with carat weights ranging from 0.23ct to 7.09ct, weight was found to be most crucial in determining the market value of a diamond. Our analysis determines that for each 1% increase in carat weight results in an increased value within the range of 1.92% to 1.97%. While our study was able to quantify the relationship between weight and price, the implicit value remains in the *eye of the beholder* as it only can with beauty and art.
+
+# Section 2: Data Description
+
+Inspection of the data shows 5 variables being utilized within the *diamonds4.csv* data set with 1,214 observations.
+
+```{r, fig.align='center'}
+knitr::kable(head(Data, 5), "pipe")
+
+# Wyatt added top 5 rows to show sample of data set
+```
+
+The information in this section mostly comes from the following source:
+
+[*Blue Nile. "The 4Cs of Diamonds," n.d.* ](https://www.bluenile.com/education/diamonds)
+
+## Dataset Variables
+
+The quality, and consequently cost, of diamonds is measured with the "4Cs of Diamonds": the `cut`, `color`, `clarity`, and `carat` weight, which all appear in the data set, along with the variable `price`.
+
+The `cut` of a diamond measures how "well-proportioned a diamond's dimension are", as well as, once being processed, the "balance and brilliance of its facets". The facets of a diamond are the sides which are formed on the diamonds surface to give it its reflective, glittery appearance. This variable is stored as a character in the data set.
+
+```         
+Distinct value counts of `cut` variable:
+```
+
+```{r, fig.align='center'}
+knitr::kable(table(Data$cut), col.names=c('Cut', 'Frequency'), "simple")
+```
+
+\* [*descriptions of `cut` categorical variable*](https://www.bluenile.com/education/diamonds/cut)
+
+The `color` of a diamond refers to the colorlessness of the diamond. Diamonds can often be yellowish, or off-white, depending on impurities in the source material. Therefore, the purest of diamonds are the ones which are completely colorless. This variable is stored as a character in the data set.
+
+```         
+Distinct Value Counts of `color` variable:
+```
+
+```{r, fig.align='center'}
+knitr::kable(table(Data$color), col.names=c('Color', 'Frequency'), "simple")
+```
+
+\* [*descriptions of `color` categorical variable*](https://www.bluenile.com/education/diamonds/color)
+
+The `clarity` of a diamond measures the cloudiness or impurities that can occur during diamond formation, due to impurities or foreign material. This variable is stored as a character in the data set.
+
+```         
+Distinct Value Counts of `clarity` variable:
+```
+
+```{r, fig.align='center'}
+knitr::kable(table(Data$clarity), col.names=c('Clarity', 'Frequency'), "simple")
+```
+
+\* [*descriptions of `clarity` categorical variable*](https://www.bluenile.com/education/diamonds/clarity)
+
+The `carat` weight refers to the physical weight of the diamond, and is often the most important indicator for showing how large, and subsequently how valuable, a diamond is. One carat is roughly equivalent to 0.2 g, or 0.00705 oz. This variable is stored as a double in the data set.
+
+Finally, the `price` refers to the price (\$USD) that the particular diamond sold for. This variable is stored as an integer in the data set.
+
+## Created Variables
+
+During the analysis portion, we had to create variables to meet the assumptions of a simple linear regression, namely `xstar` ($x^*$) and `ystar` ($y^*$). The variable `xstar` is the log of the `carat` variable, calculated as $x^* = ln(carat)$. The variable `ystar` is the log of the `price` variable, similarly calculated as $y^* = ln(price)$
+
+## Visualizations and Descriptions
+
+To better understand how `price` is related to the other variables in the data set visualizations were created to see the relationship between price and the variables `carat`, `clarity`, `color`, and `cut`. These graphs will give us an understanding of how the price changes with increasing measures of quality. The increase in quality, both for numeric and categorical data, can be seen on the following scale provided by BlueNile:
+
+![Quality Scale of Diamonds](scale.jpeg){#scale}
+
+### Price vs. Carat Weight
+
+```{r, fig.cap='Scatter plot of Diamond Price and Carat Weight'}
+ggplot(Data, aes(x=carat, y=price/1000)) + 
+  geom_point() + 
+  labs(x = "Carat Weight", y = "Price of Diamond ('000s $USD)", title = "Relationship between Diamond Price & Carat Weight")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+We can see from this scatter plot that the relationship between the price of a diamond and the carat weight appears exponential. As the carat weight increases, the price substantially increases. Carat weight is the only numeric variable in the data set other than price, and this method of using a scatter plot allows us to clearly see an upwards trajectory in the relationship between the carat weight and the price.
+
+### Price vs. Clarity
+
+To order the categories for `clarity` to match the given scale, we applied data manipulation to refactor the levels of the variable based on the tiered quality levels provided. We then created a new data frame, where the diamonds were grouped by the clarity factor and the median price was applied. We plotted both boxplots of the `price` vs. the `clarity`, as well as bar plots of the median `price` vs. `clarity`. These plots will give us an idea about how `price` is related to `clarity`. The associated plots are:
+
+```{r, fig.cap='Analysis of Prices by Clarity'}
+# Code to relevel the clarity factors from lowest-clarity to highest-clarity
+Data <- Data %>% 
+  mutate(clarity = clarity %>% fct_relevel(c("SI2", "SI1", "VS2", "VS1", "VVS2", "VVS1", "IF", "FL")))
+
+# Code to groupby the clarity and find the median value of the diamonds in that clarity level. 
+data.clarity <- Data %>% 
+  group_by(clarity) %>% 
+  summarize(median_price_clarity = median(price))
+
+# Bar plot
+ggplot(data.clarity, aes(x = clarity, y=median_price_clarity)) + 
+  geom_bar(stat = "identity") + 
+  labs(x = "Clarity", y = "Median Price of Diamond ($USD)", title = "Median Price of Diamond Based on Clarity")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r, fig.cap='Percentiles of Price by Quality'}
+# Boxplot
+ggplot(Data, aes(y = price/1000)) + 
+  geom_boxplot() + 
+  labs(x = "Clarity", y = "Price of Diamond ('000s $USD)", title = "Price of Diamond vs. Clarity")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  facet_wrap(~clarity) + 
+  coord_cartesian(ylim= c(0, 10))
+```
+
+Shown in the bar plot above, the price increases dramatically when the clarity reaches the level of FL, which is flawless. We see that the median price of the diamond is not particularly affected by the clarity. However, based on the box plot, the upper end of the prices for each quality do appear to have an upwards trend.
+
+### Price vs. Color
+
+To order the categories for `color` to match the given scale, we applied data manipulation to refactor the levels of the variable. One note regarding the refactoring: when refactoring using all of the potential `color` levels, we received warnings that the color level `K` was not found in the data. Thus, we removed that level from the refactoring. A new data frame was created where the data for diamonds were grouped by `color` and the median of the price was taken for each `color`. We plotted both box plots of the `price` vs. the `color` in addition to bar plots of the median `price` vs. `color`. These plots will give insights with regards to how `price` is related to `color`. The associated plots are:
+
+```{r, fig.cap='Analysis of Prices by Color'}
+# Releveling the factors for color to match the increasing qualities from BlueNile
+Data <- Data %>% 
+  mutate(color = color %>% fct_relevel(c("J", "I", "H", "G", "F", "E", "D")))
+
+# Code to group by color and find the median price of diamonds of each color
+data.color <- Data %>% 
+  group_by(color) %>% 
+  summarize(median_price_color = median(price))
+
+# Bar plot
+ggplot(data.color, aes(x = color, y=median_price_color)) + 
+  geom_bar(stat = "identity") + 
+  labs(x = "Color", y = "Median Price of Diamond", title = "Median Price of Diamond Based on Color")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r, fig.cap='Percentiles of Price by Color'}
+# Boxplot
+ggplot(Data, aes(y = price/1000)) + 
+  geom_boxplot() + 
+  labs(x = "Color", y = "Price of Diamond ('000s $USD)", title = "Price of Diamond vs. Color")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  facet_wrap(~color) + 
+  coord_cartesian(ylim= c(0, 10))
+```
+
+Based on the bar plot, we do not see much of a relationship between color and the price of the median diamond of each color. In fact, the highest median price for a diamond appears for the lowest color quality on the scale: `J`. Ignoring the median price for the color level `J`, there is an upwards trend leading us to believe that the distribution of `J's` prices are skewed to the higher prices. When looking at the box plots, the upper end of the diamonds sold at each color appear to have an upwards trajectory. That being said, the color does not appear to be a major factor in determining the price of a diamond, but there is certainly a loose positive relationship between `color` and `price`.
+
+### Price vs. Cut
+
+To order the categories for `cut` to match the given scale, we refactored the levels of the variable. We created a new data frame, where the data for diamonds were grouped by the `cut`, and the median of the price was taken for each group. We plotted both box plots of the `price` vs. the `cut`, as well as bar plots of the median `price` vs. `cut`. These plots will give us an idea about how `price` is related to `cut`. The associated plots are:
+
+```{r, fig.cap='Analysis of Prices by Cut'}
+# Releveling the factors for color to match the increasing qualities from BlueNile
+Data <- Data %>% 
+  mutate(cut = cut %>% fct_relevel(c("Good", "Very Good", "Ideal", "Astor Ideal")))
+
+# Code to group by color and find the median price of diamonds of each color
+data.cut <- Data %>% 
+  group_by(cut) %>% 
+  summarize(median_price_cut = median(price))
+
+# Bar plot
+ggplot(data.cut, aes(x = cut, y=median_price_cut)) + 
+  geom_bar(stat = "identity") + 
+  labs(x = "Cut", y = "Median Price of Diamond", title = "Median Price of Diamond Based on Cut")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r, , fig.cap='Percentiles of Price by Cut'}
+# Boxplot
+ggplot(Data, aes(y = price/1000)) + 
+  geom_boxplot() + 
+  labs(x = "Cut", y = "Price of Diamond ('000s $USD)", title = "Price of Diamond vs. Cut")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  facet_wrap(~cut) + 
+  coord_cartesian(ylim= c(0, 10))
+```
+
+As seen with color and clarity, the bar plot does not show much of an upwards trend in median prices based on the cut of the diamond. In fact, with the exception of the Astor Ideal cut, the median prices decline as the cut quality improves. This trend continues when looking at the box plot. There is no discernible upwards trend in the upper end of prices as the cut of the diamonds improve. Based on this information, it appears that the cut is not a relevant variable when it comes to determining the price of a diamond
+
+Based on the analysis above, the variable that best appears to relate to the price of a diamond is its carat weight, which agrees with the claims made on the BlueNile diamond education page. We will use the carat weight variable as the predictor variable moving forward in our regressions. However, based on the exponential appearance of the graph, some data transformations may be needed.
+
+# Section 3: Regression Description
+
+First, we must take a look at the scatter plot of the response variable $price$ against the designated predictor variable $carat$.
+
+```{r, fig.cap='Trending of Price and Carat'}
+ggplot(Data,aes(x=carat,y=price/1000)) + 
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title="Diamond Price vs. Carat Weight", x = "Carat Weight", y = "Price of Diamond ('000s $USD)")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+The scatter plot comparing carat and price looks exponential rather than linear. This would indicate that a transformation is needed, likely a log transformation.
+
+The simple linear regression assumptions are as follows:
+
+```{=tex}
+\begin{itemize}
+  \item The residuals have mean 0.
+  \item The errors have constant variance.
+  \item The errors are independent.
+  \item The errors are normally distributed
+\end{itemize}
+```
+To confirm, the diagnostic plots are produced:
+
+```{r, fig.cap='Diagnostic Plots'}
+result <- lm(price ~ carat,data=Data)
+par(mfrow = c(2, 2))
+plot(result)
+```
+
+```{r, fig.cap='BoxCox Plot'}
+boxcox(result)
+```
+
+Based on the diagnostic plots, it seems that both regression assumptions 1 and 2 have been violated since the errors do not have mean 0 nor constant variance. The mean of the residuals appears to decrease, and the residuals appear become more variable. If both assumptions are violated, the best solution is to log transform both the x and y variables. The Box-Cox plot agrees with this since the confidence interval does not include 1, indicating the y variable must be transformed.
+
+We will create the variable `xstar`, which is defined as $x^* = ln(carat)$ and the variable `ystar`, defined as $y^* = ln(price)$:
+
+```{r, fig.cap='Transformed Trending of Price and Carat'}
+ystar<-log(Data$price)
+Data<-data.frame(Data,ystar)
+xstar<-log(Data$carat)
+Data<-data.frame(Data,xstar)
+ggplot(Data,aes(x=xstar,y=ystar)) + geom_point()+
+  geom_smooth(method = "lm", se=FALSE)+
+  labs(title="Logged Diamond Price vs. logged Carat Weight")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+As we can see from the above scatter plot, the relationship appears much more linear than original analysis before. To be sure we have remediated the violations of the regression assumptions, we look at the diagnostic plots once more:
+
+```{r, fig.cap='Transformed Residuals'}
+result2 <- lm(ystar ~ xstar,data=Data)
+par(mfrow = c(2, 2))
+plot(result2)
+```
+
+```{r, fig.cap='ACF Plot'}
+acf(result2$residuals, main="ACF Plot of Residuals from Y* ~ X* Model")
+```
+
+After log transforming both the `x` and `y` variables, the diagnostic plots also pass the assumption, with errors appearing to have both a mean of 0 and constant variance. Further, the Q-Q plot shows that the residuals have a fairly normal distribution. Based on the ACF plot, we can also see that the errors are independent. Thus, all four regression assumptions are met.
+
+So, our hypotheses are:
+
+$H_0: \beta_1 = 0$
+
+$H_0: \beta_1 \ne 0$
+
+When we run the regression, we see:
+
+```{r}
+summary(result2)
+```
+
+Based on the results of the model with both the response and the predictor being log transformed, `xstar`, $x^* = ln(carat)$, is statistically significant at the 99% level with a p-value of $2.2\times 10^{-16}$. This means that the log of carat is statistically significant in predicting the log of the price of the diamond.
+
+The regression equation is $ln(price) = 8.521 + 1.944ln(carat)$. This means that for every 1% increase in the carat weight, the price of the diamond is expected to increase by around 1.944%.
+
+The 95% confidence interval is:
+
+```{r}
+confint(result2, level=0.95)
+```
+
+Which shows that we are 95% confident that for each 1% increase in the carat weight of a diamond, its price will increase between 1.92% and 1.97%.
