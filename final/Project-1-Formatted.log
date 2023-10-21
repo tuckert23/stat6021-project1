@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  20 OCT 2023 13:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  21 OCT 2023 12:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -590,133 +590,124 @@ File: Project-1-Formatted_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file
  (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-6-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-6
--1.pdf  used on input line 267.
+-1.pdf  used on input line 286.
 (pdftex.def)             Requested size: 460.72012pt x 315.17673pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-7-1.pdf, id=39, 460.72125
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-7-1.pdf, id=39, 464.73625
 pt x 315.1775pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file
  (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-7
 -1.pdf  used on input line 292.
-(pdftex.def)             Requested size: 460.72012pt x 315.17673pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-8-1.pdf, id=40, 464.73625
-pt x 315.1775pt>
+(pdftex.def)             Requested size: 464.74928pt x 315.18634pt.
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-8-1.pdf, id=40, 459.7175p
+t x 313.17pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file
  (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-8
--1.pdf  used on input line 298.
-(pdftex.def)             Requested size: 464.74928pt x 315.18634pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-9-1.pdf, id=41, 459.7175p
-t x 313.17pt>
+-1.pdf  used on input line 319.
+(pdftex.def)             Requested size: 459.7304pt x 313.17877pt.
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-9-1.pdf, id=41, 464.73625
+pt x 313.17pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file
  (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-9
 -1.pdf  used on input line 325.
-(pdftex.def)             Requested size: 459.7304pt x 313.17877pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-10-1.pdf, id=42, 464.7362
+(pdftex.def)             Requested size: 464.74928pt x 313.17877pt.
+[3 <./scale.jpeg>] [4 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-6
+-1.pdf>] [5 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-7-1.pdf>] [
+6 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-8-1.pdf>] [7 <./Proje
+ct-1-Formatted_files/figure-latex/unnamed-chunk-9-1.pdf>]
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-10-1.pdf, id=102, 459.717
 5pt x 313.17pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-10-1.pdf Graphic fil
 e (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-10-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-0-1.pdf  used on input line 331.
-(pdftex.def)             Requested size: 464.74928pt x 313.17877pt.
-[3 <./scale.jpeg>] [4 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-6
--1.pdf>] [5 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-7-1.pdf>] [
-6 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-8-1.pdf>] [7 <./Proje
-ct-1-Formatted_files/figure-latex/unnamed-chunk-9-1.pdf>] [8 <./Project-1-Forma
-tted_files/figure-latex/unnamed-chunk-10-1.pdf>]
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-11-1.pdf, id=115, 459.717
+0-1.pdf  used on input line 353.
+(pdftex.def)             Requested size: 459.7304pt x 313.17877pt.
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-11-1.pdf, id=103, 463.732
 5pt x 313.17pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-11-1.pdf Graphic fil
 e (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-11-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-1-1.pdf  used on input line 360.
-(pdftex.def)             Requested size: 459.7304pt x 313.17877pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-12-1.pdf, id=116, 463.732
-5pt x 313.17pt>
+1-1.pdf  used on input line 359.
+(pdftex.def)             Requested size: 463.73842pt x 313.174pt.
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-12-1.pdf, id=104, 460.721
+25pt x 315.1775pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-12-1.pdf Graphic fil
 e (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-12-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-2-1.pdf  used on input line 366.
-(pdftex.def)             Requested size: 463.73842pt x 313.174pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-13-1.pdf, id=117, 460.721
-25pt x 315.1775pt>
+2-1.pdf  used on input line 387.
+(pdftex.def)             Requested size: 460.72012pt x 315.17673pt.
+[8 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-10-1.pdf>] [9 <./Pro
+ject-1-Formatted_files/figure-latex/unnamed-chunk-11-1.pdf>]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
+98.
+(/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-13-1.pdf, id=130, 457.71p
+t x 288.07625pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-13-1.pdf Graphic fil
 e (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-13-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-3-1.pdf  used on input line 394.
-(pdftex.def)             Requested size: 460.72012pt x 315.17673pt.
-[9 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-11-1.pdf>] [10 <./Pr
-oject-1-Formatted_files/figure-latex/unnamed-chunk-12-1.pdf>]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
-05.
-(/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-14-1.pdf, id=143, 457.71p
-t x 288.07625pt>
+3-1.pdf  used on input line 408.
+(pdftex.def)             Requested size: 457.72285pt x 288.08432pt.
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-14-1.pdf, id=131, 436.631
+26pt x 252.945pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-14-1.pdf Graphic fil
 e (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-14-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-4-1.pdf  used on input line 415.
-(pdftex.def)             Requested size: 457.72285pt x 288.08432pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-15-1.pdf, id=144, 436.631
-26pt x 252.945pt>
+4-1.pdf  used on input line 414.
+(pdftex.def)             Requested size: 436.63019pt x 252.94438pt.
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-15-1.pdf, id=132, 458.713
+75pt x 313.17pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-15-1.pdf Graphic fil
 e (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-15-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-5-1.pdf  used on input line 421.
-(pdftex.def)             Requested size: 436.63019pt x 252.94438pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-16-1.pdf, id=145, 458.713
-75pt x 313.17pt>
+5-1.pdf  used on input line 433.
+(pdftex.def)             Requested size: 458.72662pt x 313.17877pt.
+[10 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-12-1.pdf>] [11 <./P
+roject-1-Formatted_files/figure-latex/unnamed-chunk-13-1.pdf> <./Project-1-Form
+atted_files/figure-latex/unnamed-chunk-14-1.pdf>] [12 <./Project-1-Formatted_fi
+les/figure-latex/unnamed-chunk-15-1.pdf>]
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-16-1.pdf, id=184, 448.676
+25pt x 288.07625pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-16-1.pdf Graphic fil
 e (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-16-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-6-1.pdf  used on input line 440.
-(pdftex.def)             Requested size: 458.72662pt x 313.17877pt.
-[11 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-13-1.pdf>] [12 <./P
-roject-1-Formatted_files/figure-latex/unnamed-chunk-14-1.pdf> <./Project-1-Form
-atted_files/figure-latex/unnamed-chunk-15-1.pdf>] [13 <./Project-1-Formatted_fi
-les/figure-latex/unnamed-chunk-16-1.pdf>]
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-17-1.pdf, id=198, 448.676
-25pt x 288.07625pt>
+6-1.pdf  used on input line 444.
+(pdftex.def)             Requested size: 448.68884pt x 288.08432pt.
+<Project-1-Formatted_files/figure-latex/unnamed-chunk-17-1.pdf, id=185, 436.631
+26pt x 290.08376pt>
 File: Project-1-Formatted_files/figure-latex/unnamed-chunk-17-1.pdf Graphic fil
 e (type pdf)
 <use Project-1-Formatted_files/figure-latex/unnamed-chunk-17-1.pdf>
 Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-7-1.pdf  used on input line 451.
-(pdftex.def)             Requested size: 448.68884pt x 288.08432pt.
-<Project-1-Formatted_files/figure-latex/unnamed-chunk-18-1.pdf, id=199, 436.631
-26pt x 290.08376pt>
-File: Project-1-Formatted_files/figure-latex/unnamed-chunk-18-1.pdf Graphic fil
-e (type pdf)
-<use Project-1-Formatted_files/figure-latex/unnamed-chunk-18-1.pdf>
-Package pdftex.def Info: Project-1-Formatted_files/figure-latex/unnamed-chunk-1
-8-1.pdf  used on input line 457.
+7-1.pdf  used on input line 450.
 (pdftex.def)             Requested size: 436.63019pt x 290.08304pt.
-[14 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-17-1.pdf>] [15 <./P
-roject-1-Formatted_files/figure-latex/unnamed-chunk-18-1.pdf>] (./Project-1-For
+[13 <./Project-1-Formatted_files/figure-latex/unnamed-chunk-16-1.pdf>] [14 <./P
+roject-1-Formatted_files/figure-latex/unnamed-chunk-17-1.pdf>] (./Project-1-For
 matted.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14139 strings out of 476025
- 228813 string characters out of 5790017
+ 14132 strings out of 476025
+ 228372 string characters out of 5790017
  1865388 words of memory out of 5000000
- 34178 multiletter control sequences out of 15000+600000
- 568702 words of font info for 132 fonts, out of 8000000 for 9000
+ 34172 multiletter control sequences out of 15000+600000
+ 568832 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,6n,81p,1016b,648s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
@@ -730,10 +721,10 @@ r/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/te
 xlive/2023/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2023/
 texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf-dist
 /fonts/type1/public/lm/lmtti10.pfb>
-Output written on Project-1-Formatted.pdf (15 pages, 1041159 bytes).
+Output written on Project-1-Formatted.pdf (14 pages, 981498 bytes).
 PDF statistics:
- 333 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 30871 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 320 PDF objects out of 1000 (max. 8388607)
+ 237 compressed objects within 3 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 30866 words of extra memory for PDF output out of 35830 (max. 10000000)
 

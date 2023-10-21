@@ -1,6 +1,6 @@
 ---
 title: "STAT 6021: Project 1"
-author: "Taylor Tucker, Mahin Ganesan, Wyatt Priddy"
+author: "Group 12: Taylor Tucker, Mahin Ganesan, Wyatt Priddy"
 date: "`r Sys.Date()`"
 output: pdf_document
 ---
